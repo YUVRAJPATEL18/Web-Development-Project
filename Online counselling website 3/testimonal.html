@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Counselling - Client Stories</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1A5F7A;
+            --secondary-color: #159895;
+            --accent-color: #57C5B6;
+            --text-color: #0E2954;
+            --background-color: #F8F9FA;
+            --soft-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            --hover-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .testimonials-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--soft-shadow);
+            position: relative;
+            transition: all var(--transition-speed) ease;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 3.5rem;
+            opacity: 0.1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .testimonial-text::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 4px;
+            height: 90%;
+            background-color: var(--accent-color);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .client-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .client-image:hover {
+            transform: scale(1.1);
+        }
+
+        .client-details {
+            flex-grow: 1;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .client-detail {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .rating {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .rating-text {
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-brain"></i>Harmony Counselling
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="counselling.html">Our Counsellors</a></li>
+                <li><a href="testimonal.html">Testimonal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="testimonials-header">
+            <h1>Transformative Stories of Hope</h1>
+            <p>Our clients share their journeys of healing, personal growth, and rediscovering inner strength through compassionate counselling.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-text">5/5 Exceptional</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "Harmony Counselling helped me navigate through a difficult period in my life. 
+                    The therapists are compassionate, understanding, and truly helped me find my path to healing."
+                </p>
+                <div class="client-info">
+                    <img src="assests/girlsmiling.avif" alt="Jessica M." class="client-image">
+                    <div class="client-details">
+                        <div class="client-name">Jessica M.</div>
+                        <div class="client-detail">Marketing Professional</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-text">5/5 Life-Changing</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "After years of struggling with anxiety, I finally found peace. The therapists at Harmony 
+                    provided a safe space to explore my emotions and develop coping strategies that have transformed my life."
+                </p>
+                <div class="client-info">
+                    <img src="assests/man.jpg" alt="Michael R." class="client-image">
+                    <div class="client-details">
+                        <div class="client-name">Michael R.</div>
+                        <div class="client-detail">Software Engineer</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-text">5/5 Supportive</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "As a new parent struggling with postpartum depression, Harmony Counselling was my lifeline. 
+                    Their empathetic approach and tailored support helped me reconnect with myself and my family."
+                </p>
+                <div class="client-info">
+                    <img src="assests/young-woman-walking-forest_1328-2541.avif" alt="Elena S." class="client-image">
+                    <div class="client-details">
+                        <div class="client-name">Elena S.</div>
+                        <div class="client-detail">Graphic Designer & New Mother</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" id="contact">
+        <h2>Get In Touch</h2>
+        <p>Feel free to reach out for collaborations or opportunities</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/narendramodi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/narendramodi" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/narendramodi/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="margin-top: 20px;">&copy; 2024 Harmony Counselling. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
